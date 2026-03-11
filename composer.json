@@ -1,0 +1,54 @@
+{
+    "name": "adheart/logging",
+    "type": "symfony-bundle",
+    "license": "proprietary",
+    "description": "Unified logging stuff for PHP projects",
+    "autoload": {
+        "psr-4": {
+            "Adheart\\Logging\\": "php/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "php/tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pavlokomarov",
+            "email": "lt10@ukr.net"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "monolog/monolog": "^2.3",
+        "symfony/http-kernel": "^5.4 || ^6.4 || ^7.0",
+        "symfony/config": "^5.4 || ^6.4 || ^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "vimeo/psalm": "^6.15",
+        "squizlabs/php_codesniffer": "^4.0",
+        "symfony/console": "^5.4 || 6.4 || ^7.0",
+        "symfony/dependency-injection": "^5.4 || ^6.4 || ^7.0",
+        "nikic/php-parser": "^5.0"
+    },
+    "suggest": {
+        "symfony/console": "Required to register and run the logging:scan command.",
+        "symfony/dependency-injection": "Required to wire scan command services in Symfony containers.",
+        "nikic/php-parser": "Required by logging:scan to parse PHP files."
+    },
+    "extra": {
+        "symfony": {
+            "bundle": {
+                "Adheart\\Logging\\LoggingBundle": "all"
+            }
+        }
+    },
+    "scripts": {
+        "quality": "composer phpcs && composer psalm && composer test",
+        "phpcs": "vendor/bin/phpcs",
+        "psalm": "vendor/bin/psalm --no-progress",
+        "test": "vendor/bin/phpunit"
+    }
+}
